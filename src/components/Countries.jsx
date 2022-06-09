@@ -1,12 +1,19 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import useAppContext from '../hooks/useAppContext'
 import useFetcher from '../hooks/useFetcher'
 
 const Countries = () => {
+  const { setCountries } = useAppContext()
   const { data: list, error } = useFetcher('https://restcountries.com/v3.1/all')
 
   if (error) {
-    return (<p>{error}</p>)
+    return (<p>{error.message}</p>)
   }
+
+  useEffect(() => {
+    setCountries(list)
+  }, [])
 
   return (
     // ToDo poner estilos

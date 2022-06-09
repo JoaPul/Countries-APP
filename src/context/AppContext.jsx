@@ -4,11 +4,13 @@ const AppContext = createContext(null)
 
 // el que comunica a todos los componentes
 const ContextProvider = ({ children }) => {
-  const [query, setQuery] = useState('')
+
+  const [contries, setCountries] = useState([])
+  const [filterCountries, setFilterCountries] = useState([])
+  const [sms, stSms] = useState({ type: '' })
 
   const initialValue = {
-    query,
-    setQuery
+    setCountries
   }
   return (
     <AppContext.Provider value={initialValue}>

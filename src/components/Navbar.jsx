@@ -7,19 +7,14 @@ import useAppContext from '../hooks/useAppContext'
 const SearchBar = () => {
   const searchRef = useRef()
 
-  const { query, setQuery } = useAppContext()
-
   const handleSubmit = (event) => {
     // !Esto previene de que la pagina se recargue
     event.preventDefault()
     // !Esto
-    setQuery(searchRef.current.value)
-    searchRef.current.value = ''
-    console.log(query)
+    // searchRef.current.value
+    // reseteo del formulario
+    event.target.reset()
   }
-  // const onResetQuery = () => {
-  //   setQuery('')
-  // }
 
   return (
     <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
@@ -31,7 +26,7 @@ const SearchBar = () => {
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
             <li className='nav-item'>
-              <Link onClick={() => setQuery('')} className='nav-link active' aria-current='page' to='/countries'>Home</Link>
+              <Link className='nav-link active' aria-current='page' to='/countries'>Home</Link>
             </li>
           </ul>
           <form className='d-flex' onSubmit={handleSubmit}>

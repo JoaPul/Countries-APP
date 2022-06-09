@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 // Paths
 import Paths from './routes'
 // Context
-import { ContextProvider } from './context'
+import { ContextProvider } from './context/AppContext'
 
 const root = document.getElementById('root')
 const container = createRoot(root)
