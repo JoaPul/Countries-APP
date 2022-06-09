@@ -6,7 +6,7 @@ import './styles/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 // components
 // import App from './pages/App'
-import SearchBar from './components/Navbar'
+// import SearchBar from './components/Navbar'
 // Paths
 import Paths from './routes'
 // Context
@@ -19,7 +19,6 @@ container.render(
   <StrictMode>
     <ContextProvider>
       <BrowserRouter>
-        <SearchBar />
         <Paths />
       </BrowserRouter>
     </ContextProvider>

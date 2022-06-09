@@ -1,11 +1,18 @@
 import '../styles/App.css'
-import Countries from '../components/Countries'
+// import Countries from '../components/Countries'
+import SearchBar from '../components/Navbar'
+import { Outlet } from 'react-router-dom'
+import { Suspense } from 'react'
 
-function App () {
+const App = () => {
   return (
     <>
-      <div className='App'>
-        <Countries />
+      <SearchBar />
+      <div className='App container py-5'>
+        {/* {TODO añadir spiner} */}
+        <Suspense fallback={<p>...loading</p>}>
+          <Outlet />
+        </Suspense>
       </div>
     </>
   )

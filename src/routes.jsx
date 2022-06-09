@@ -1,6 +1,7 @@
 import { Navigate, useRoutes } from 'react-router-dom'
 import App from './pages/App'
-import Country from './pages/Country'
+import Country from './components/Country'
+import Countries from './components/Countries'
 
 const Paths = () => {
   const element = useRoutes([
@@ -10,11 +11,17 @@ const Paths = () => {
     },
     {
       path: '/countries',
-      element: <App />
-    },
-    {
-      path: '/country/:name',
-      element: <Country />
+      element: <App />,
+      children: [
+        {
+          element: <Countries />,
+          index: true
+        },
+        {
+          path: 'country/:name',
+          element: <Country />
+        }
+      ]
     },
     // TODO hacer esto un componente "page not found"
     {
