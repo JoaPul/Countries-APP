@@ -6,12 +6,17 @@ import useAppContext from '../hooks/useAppContext'
 
 const SearchBar = () => {
   const searchRef = useRef()
+  const { handleFilterCountries } = useAppContext()
 
   const handleSubmit = (event) => {
     // !Esto previene de que la pagina se recargue
     event.preventDefault()
-    // !Esto
-    // searchRef.current.value
+    // con esto no dejamos que se ejcute la funcion con solo unos espacios
+    const trimValue = searchRef.current.value.trim()
+    // con esto impide que se ejecute si no tiene caracteres la busqueda (tambiencon un required en input html se ejecuta lo mismo)
+    if (trimValue !== '') {
+      handleFilterCountries(trimValue)
+    }
     // reseteo del formulario
     event.target.reset()
   }
@@ -30,7 +35,7 @@ const SearchBar = () => {
             </li>
           </ul>
           <form className='d-flex' onSubmit={handleSubmit}>
-            <input ref={searchRef} className='form-control me-2' type='search' placeholder='Search' aria-label='Search' />
+            <input required ref={searchRef} className='form-control me-2' type='search' placeholder='Search' aria-label='Search' />
             <button className='btn btn-secondary' type='submit'>Search</button>
           </form>
         </div>

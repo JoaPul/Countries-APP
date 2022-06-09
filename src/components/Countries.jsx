@@ -4,25 +4,45 @@ import useAppContext from '../hooks/useAppContext'
 import useFetcher from '../hooks/useFetcher'
 
 const Countries = () => {
-  const { setCountries } = useAppContext()
-  const { data: list, error } = useFetcher('https://restcountries.com/v3.1/all')
+  const { setCountries, filterCountries, sms } = useAppContext()
+  const { data: contries, error } = useFetcher('https://restcountries.com/v3.1/all')
 
   if (error) {
     return (<p>{error.message}</p>)
   }
 
   useEffect(() => {
-    setCountries(list)
+    setCountries(contries)
   }, [])
+
+  if (sms.type === 'error') {
+    return (<p>{sms.message}</p>)
+  }
+  if (sms.type === 'success') {
+    return (
+      <section className='row gy-4'>
+        {filterCountries.map((index, key) => (
+          <div key={key} className='col-12 col-sm-6 col-md-6 col-lg-3'>
+            <Link to={`country/${index.name.common}`}>
+              <article className='card' style={{ height: 'inherit' }}>
+                <img className='card-img-top' src={index.flags.svg} alt={index.name.common} />
+                <p>{index.name.common}</p>
+              </article>
+            </Link>
+          </div>
+        ))}
+      </section>
+    )
+  }
 
   return (
     // ToDo poner estilos
     <section className='row gy-4'>
-      {list.map((index, key) => (
+      {contries.map((index, key) => (
         <div key={key} className='col-12 col-sm-6 col-md-6 col-lg-3'>
-          <Link to={`country/${index.name.common}`}>
-            <article className='card'>
-              <img className='card-img-top' src={index.flags.svg} alt={index.name.common} />
+          <Link to={`country/${index.name.common}`} style={{ height: '100%' }}>
+            <article className='card' style={{ height: 'inherit' }}>
+              <img className='card-img-top' style={{ height: '80%', objectFit: 'cover' }} src={index.flags.svg} alt={index.name.common} />
               <p>{index.name.common}</p>
             </article>
           </Link>
