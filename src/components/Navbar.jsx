@@ -1,11 +1,12 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useAppContext from '../hooks/useAppContext'
 
 // import '../assets/asteroide.png'
 
 const SearchBar = () => {
   const searchRef = useRef()
+  const navigate = useNavigate()
   const { handleFilterCountries } = useAppContext()
 
   const handleSubmit = (event) => {
@@ -16,9 +17,10 @@ const SearchBar = () => {
     // con esto impide que se ejecute si no tiene caracteres la busqueda (tambiencon un required en input html se ejecuta lo mismo)
     if (trimValue !== '') {
       handleFilterCountries(trimValue)
+      navigate('/countries/search', { repalce: true })
+      // reseteo del formulario
+      event.target.reset()
     }
-    // reseteo del formulario
-    event.target.reset()
   }
 
   return (

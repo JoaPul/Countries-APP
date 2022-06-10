@@ -3,7 +3,7 @@ import { createContext, useState } from 'react'
 const AppContext = createContext(null)
 
 // el que comunica a todos los componentes
-const ContextProvider = ({ children }) => {
+const AppProvider = ({ children }) => {
   // Estado inicial de todos los paises
   const [contries, setCountries] = useState([])
   // Estado de los paises filtrados con los que hizo match
@@ -44,4 +44,4 @@ const ContextProvider = ({ children }) => {
   )
 }
 
-export { AppContext, ContextProvider }
+export { AppContext, AppProvider }
