@@ -10,14 +10,21 @@ const Search = () => {
   if (sms.type === 'success') {
     return (
       <>
-        <p className='alert alert-success' role='alert'>{sms.message}<span> {filterCountries.length} </span></p>
+        <p className='alert alert-success' role='alert'>
+          {sms.message}
+          <span>
+            <br />{filterCountries.length}
+          </span>
+        </p>
         <section className='row gy-4'>
           {filterCountries.map((index, key) => (
             <div key={key} className='col-12 col-sm-6 col-md-6 col-lg-3'>
-              <Link to={`/country/${index.name.common}`}>
+              <Link to={`/countries/country/${index.name.common}`}>
                 <article className='card' style={{ height: 'inherit' }}>
                   <img loading='lazy' className='card-img-top' src={index.flags.svg} alt={index.name.common} />
-                  <p>{index.name.common}</p>
+                  <div className='card-body'>
+                    <p className='card-title'>{index.name.common}</p>
+                  </div>
                 </article>
               </Link>
             </div>

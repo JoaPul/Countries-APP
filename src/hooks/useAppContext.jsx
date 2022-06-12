@@ -1,11 +1,11 @@
 import { useContext } from 'react'
 
-import { AuthContext } from '../context/AuthContext'
+import { AppContext } from '../context/AppContext'
 
 const useAuthContext = () => {
-  const context = useContext(AuthContext)
+  const context = useContext(AppContext)
 
-  if (!context) throw new Error('No hay un contexto para login')
+  if (!context) throw new Error('No hay un contexto activo')
 
   return context
 }

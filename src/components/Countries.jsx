@@ -22,7 +22,7 @@ const Countries = () => {
         <div key={key} className='col-12 col-sm-6 col-md-6 col-lg-3'>
           <Link to={`country/${index.name.common}`} style={{ height: '100%' }}>
             <article className='card' style={{ height: 'inherit' }}>
-              <img className='card-img-top' style={{ height: '80%', objectFit: 'cover' }} src={index.flags.svg} alt={index.name.common} />
+              <img loading='lazy' className='card-img-top' style={{ height: '80%', objectFit: 'cover' }} src={index.flags.svg} alt={index.name.common} />
               <p>{index.name.common}</p>
             </article>
           </Link>

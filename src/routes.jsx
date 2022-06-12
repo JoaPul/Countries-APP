@@ -1,9 +1,14 @@
-import { Navigate, useRoutes } from 'react-router-dom'
+// pages
 import App from './pages/App'
+import Login from './pages/Login'
+
+// components
 import Country from './components/Country'
 import Countries from './components/Countries'
 import Search from './components/Search'
-import Login from './pages/Login'
+
+// funciones de librerias
+import { Navigate, useRoutes } from 'react-router-dom'
 
 const Paths = () => {
   const element = useRoutes([
